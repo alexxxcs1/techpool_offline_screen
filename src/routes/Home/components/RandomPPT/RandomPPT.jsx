@@ -49,7 +49,7 @@ export class RandomPPT extends Component {
         </div>
         <div className={[style.longScroll, "childcenter", "childcolumn"].join(" ")}
           style={{ backgroundImage: "url(" + longScroll + ")" }}>
-            <div className={[style.detial,'childcenter'].join(' ')}>
+            <div className={[style.detial,'childcenter','childcontentstart'].join(' ')}>
                 {this.RandomPerson()}
             </div>
         </div>
