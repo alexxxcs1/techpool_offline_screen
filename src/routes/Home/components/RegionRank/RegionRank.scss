@@ -1,0 +1,61 @@
+.RegionRank{
+    .Tittle{
+        width: 857px;
+        height: 150px;
+        background-size: 100% 100%;
+        margin-bottom: -50px;
+        font-size: 60px;
+        font-weight: bold;
+    }
+    .longScroll{
+        width: 2330px;
+        height: 889px;
+        // background: #000;
+        background-size: 100% 100%;
+
+        .detial{
+            width: 80%;
+            height: 77%;
+            // background: #000;
+
+            .TableHead{
+                
+                .TableColumn{
+                    width: var(--rowwidth);
+                }
+                .Head{
+                    width: 310px;
+                    height: 55px;
+                    background-size: 100% 100%;
+                    font-size: 39px;
+                    font-weight: bold;
+                    span{
+                        margin: 0 35px;
+                    }
+                }
+            }
+            .TableBody{
+                width: 100%;
+                height: calc(100% - 55px);
+                // background: #000;
+                // overflow: auto;
+                .RowItem{
+                    width: 100%;
+                    .RowColumn{
+                        width: 33%;
+
+                        .ValueBox{
+                            // width: 255px;
+                            // height: 49px;
+                            font-size: 35px;
+                            padding: 4px 52px;
+                            margin: 4px;
+                            background-size: 100% 100%;
+                            // font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
