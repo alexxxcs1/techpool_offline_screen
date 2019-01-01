@@ -29,6 +29,9 @@ export class RandomPPT extends Component {
         <div className={[style.PersonNameBox,'childcenter','childcolumn'].join(' ')}>
             <div className={[style.PersonName,'childcenter'].join(' ')} style={{backgroundImage:'url('+tablechild+')'}}>吴彦祖</div>
         </div>
+        <div className={[style.ScoreBox,'childcenter'].join(' ')} style={{ backgroundImage: "url(" + button + ")" }}>
+          {Math.floor(Math.random()*200)}分
+        </div>
     </div>);
     }
     return result;

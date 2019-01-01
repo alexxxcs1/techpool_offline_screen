@@ -45,7 +45,7 @@
                 }
                 .PersonNameBox{
                     width: 100%;
-                    height: 330px;
+                    height: 150px;
                     // background: #000;
 
                     .PersonName{
@@ -57,6 +57,13 @@
                         font-weight: bold;
                         color: #544840;
                     }
+                }
+                .ScoreBox{
+                    width: 364px;
+                    height: 136px;
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    font-size: 58px;
                 }
             }
         }

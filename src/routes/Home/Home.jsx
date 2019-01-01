@@ -5,6 +5,7 @@ import background from 'assets/background.png'
 import PresonRank from './components/PresonRank'
 import RegionRank from './components/RegionRank'
 import RandomPPT from './components/RandomPPT'
+import RotationAnswer from './components/RotationAnswer'
 
 export class Home extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ export class Home extends Component {
                   <Route path='/regionrank' component={RegionRank} />
                   <Route path='/presonrank' component={PresonRank} />
                   <Route path='/randomppt' component={RandomPPT} />
+                  <Route path='/rotation' component={RotationAnswer} />
                   <Redirect from="/" to="/regionrank" />
 
               </Switch>
