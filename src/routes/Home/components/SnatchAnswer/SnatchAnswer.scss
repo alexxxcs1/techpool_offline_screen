@@ -1,0 +1,66 @@
+.SnatchAnswer{
+    .Tittle{
+        width: 857px;
+        height: 150px;
+        background-size: 100% 100%;
+        margin-bottom: -50px;
+        font-size: 60px;
+        font-weight: bold;
+        span{
+            margin: 0 15px;
+        }
+    }
+    .longScroll{
+        width: 2330px;
+        height: 889px;
+        // background: #000;
+        background-size: 100% 100%;
+
+        .detial{
+            width: 80%;
+            height: 77%;
+
+            .QuestionBox{
+                width: 100%;
+                height: 100%;
+                flex-wrap: wrap;
+                .Question{
+                    width: calc(100% / 5);
+                    height: 50%;
+                    animation: scaleIn 0.5s ;
+                    .Flag{
+                        width: 199px;
+                        height: 250px;
+                        background-size: 100% 100%;
+
+                        .QuestionInfo{
+                            width: 126px;
+                            height: 179px;
+                            // background: #000;
+                            margin-top: 20px;
+
+                            & span:nth-child(1){
+                                font-size: 71px;
+                                font-weight: bold;
+                            }
+                            & span:nth-child(2){
+                                font-size: 31px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@keyframes scaleIn{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}

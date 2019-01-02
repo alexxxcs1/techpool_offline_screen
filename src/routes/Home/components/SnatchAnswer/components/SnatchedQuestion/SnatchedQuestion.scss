@@ -1,0 +1,103 @@
+.SnatchedQuestion{
+    width: 100%;
+    height: 100%;
+    // background: #000;
+    position: relative;
+    .detial{
+        width: 100%;
+        height: 77%;
+
+        .QuestionTitle{
+            width: 100%;
+            height: 269px;
+            font-size: 65px;
+            font-weight: bold;
+        }
+        .QuestionOptionGroup{
+            width: 100%;
+            height: calc(100% - 269px);
+            // background: #000;
+            flex-wrap: wrap;
+            .OptionBox{
+                width: 50%;
+                height: 50%;
+                // background: #fff;
+                font-size: 45px;
+            }
+        }
+    }
+    .SnatchedScore{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 7;
+        width: 523px;
+        height: 503px;
+        background: #fff;
+        .TitleBox {
+            width: 351px;
+            height: 72px;
+            margin-top: 12px;
+            position: relative;
+    
+            .Tittleleft {
+                // width: 65px;
+                // height: 47px;
+                z-index: 1;
+                position: absolute;
+                width: 0;
+                height: 0;
+    
+                left: -27px;
+                top: 16px;
+                border-top: solid #f66060 36px;
+                border-right: solid #f66060 80px;
+                border-bottom: solid #f66060 36px;
+                border-left: solid transparent 9px;
+                transform: translateX(-31px);
+            }
+    
+            .TittleValue {
+    
+                width: 100%;
+                height: 100%;
+                background: #f66060;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                z-index: 2;
+                box-shadow: #333 0 0px 30px 0px;
+                font-size: 22px;
+                color: #fff;
+            }
+    
+            .Tittleright {
+                // width: 65px;
+                // height: 47px;
+                z-index: 1;
+                position: absolute;
+                width: 0;
+                height: 0;
+    
+                right: -27px;
+                top: 16px;
+                border-top: solid #f66060 36px;
+                border-right: solid transparent 9px;
+                border-bottom: solid #f66060 36px;
+                border-left: solid #f66060 80px;
+                transform: translateX(31px);
+            }
+        }
+
+        .TitleInfo{
+            width: 100%;
+            height: calc(100% - 72px);
+            // background: #000;
+            font-size: 135px;
+            font-weight: bold;
+            color: #f66060;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import style from './RotationAnswer.scss';
+import QuestionBox from './components/QuestionBox'
+
 import button from 'assets/button.png'
 import ElderScroll from 'assets/ElderScroll.png'
 import tablehead from 'assets/tablehead.png'
@@ -43,6 +45,7 @@ export class RotationAnswer extends Component {
    render() {
       return (
          <div className={[style.RotationAnswer, 'childcenter', 'childcolumn'].join(' ')} >
+            
             <div
                className={[style.Tittle, "childcenter"].join(" ")}
                style={{ backgroundImage: "url(" + button + ")" }}>
@@ -51,13 +54,14 @@ export class RotationAnswer extends Component {
                <span>天</span>
                <span>下</span>
             </div>
-            <div className={[style.TheElderScroll,'childcenter'].join(' ')} style={{ backgroundImage: 'url(' + ElderScroll + ')' }}>
+            {/* <div className={[style.TheElderScroll,'childcenter'].join(' ')} style={{ backgroundImage: 'url(' + ElderScroll + ')' }}>
                <div className={[style.Detial,'childcenter','childcontentstart'].join(' ')}>
 
                   {this.createPerson()}
 
                </div>
-            </div>
+            </div> */}
+            <QuestionBox />
          </div>
       );
    }

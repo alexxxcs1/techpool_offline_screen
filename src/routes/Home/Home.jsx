@@ -6,6 +6,8 @@ import PresonRank from './components/PresonRank'
 import RegionRank from './components/RegionRank'
 import RandomPPT from './components/RandomPPT'
 import RotationAnswer from './components/RotationAnswer'
+import BlackRank from './components/BlackRank'
+import SnatchAnswer from './components/SnatchAnswer'
 
 export class Home extends Component {
   constructor(props) {
@@ -39,6 +41,8 @@ export class Home extends Component {
                   <Route path='/presonrank' component={PresonRank} />
                   <Route path='/randomppt' component={RandomPPT} />
                   <Route path='/rotation' component={RotationAnswer} />
+                  <Route path='/blackrank' component={BlackRank} />
+                  <Route path='/snatch' component={SnatchAnswer} />
                   <Redirect from="/" to="/regionrank" />
 
               </Switch>
