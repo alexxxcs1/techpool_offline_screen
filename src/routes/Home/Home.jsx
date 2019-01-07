@@ -19,6 +19,7 @@ export class Home extends Component {
   }
   componentDidMount()
   {
+    
   }
   customRoute(){
     //此处应该用hash路由，不能用状态路由
@@ -37,8 +38,8 @@ export class Home extends Component {
               <Switch>
                   
                   {/* 首页 */}
-                  <Route path='/regionrank' component={RegionRank} />
-                  <Route path='/presonrank' component={PresonRank} />
+                  <Route path='/regionrank' component={RegionRank} /> {/*预热ajax*/} 
+                  <Route path='/presonrank' component={PresonRank} /> {/*预热ajax*/} 
                   <Route path='/randomppt' component={RandomPPT} />
                   <Route path='/rotation' component={RotationAnswer} />
                   <Route path='/blackrank' component={BlackRank} />

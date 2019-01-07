@@ -21,7 +21,7 @@
             .TableHead{
                 
                 .TableColumn{
-                    width: var(--rowwidth);
+                    // width: var(--rowwidth);
                 }
                 .Head{
                     width: 310px;
@@ -40,10 +40,9 @@
                 // background: #000;
                 // overflow: auto;
                 .RowItem{
-                    width: 100%;
+                    max-height: calc(100% / 10);
                     .RowColumn{
-                        width: 33%;
-
+                        flex-grow: 1;
                         .ValueBox{
                             // width: 255px;
                             // height: 49px;
@@ -51,6 +50,7 @@
                             padding: 4px 52px;
                             margin: 4px;
                             background-size: 100% 100%;
+                            flex-wrap: nowrap;
                             // font-weight: bold;
                         }
                     }

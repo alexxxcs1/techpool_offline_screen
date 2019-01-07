@@ -10,29 +10,61 @@ import tablechild from "assets/tablechild.png";
 export class RandomPPT extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ws_connection:null,
+      data:[],
+    };
     this.refreshProps = this.refreshProps.bind(this);
     this.RandomPerson = this.RandomPerson.bind(this);
   }
   componentWillReceiveProps(nextprops) {
     this.refreshProps(nextprops);
+    
   }
   componentDidMount() {
     this.refreshProps(this.props);
+    this.connectWebSocket();
   }
   refreshProps(props) {}
+  connectWebSocket(){
+    let connection = new WebSocket('ws://192.168.1.12:8282');
+    this.state.ws_connection = connection;
+    this.setState(this.state);
+    let self = this;
+    //open connection
+    connection.onopen = function () {
+      connection.send(JSON.stringify({'type':'pcppt','action':'show'})); 
+    };
+    //onerror
+    connection.onerror = function (error) {
+      console.log('WebSocket Error ' + error);
+    };
+    
+    //to receive the message from server
+    connection.onmessage = function (e) {
+      let data = JSON.parse(e.data);
+      switch (data.action) {
+        case 'show':
+          self.state.data = data.result;
+          self.setState(self.state);
+          break;
+        default:
+          break;
+      }
+    };
+  }
   RandomPerson(){
       let result = [];
-    for (let z = 0; z < 3; z++) {
-        result.push(<div className={[style.RandomResultBox,'childcenter','childcolumn'].join(' ')}>
-        <div className={[style.RegionName,'childcenter'].join(' ')} style={{backgroundImage:'url('+tablehead+')'}}>香港大区</div>
-        <div className={[style.PersonNameBox,'childcenter','childcolumn'].join(' ')}>
-            <div className={[style.PersonName,'childcenter'].join(' ')} style={{backgroundImage:'url('+tablechild+')'}}>吴彦祖</div>
-        </div>
-        <div className={[style.ScoreBox,'childcenter'].join(' ')} style={{ backgroundImage: "url(" + button + ")" }}>
-          {Math.floor(Math.random()*200)}分
-        </div>
-    </div>);
+    for (let z = 0; z < this.state.data.length; z++) {
+          result.push(<div className={[style.RandomResultBox,'childcenter','childcolumn'].join(' ')} key={this.state.data[z].id+'person'}>
+              <div className={[style.RegionName,'childcenter'].join(' ')} style={{backgroundImage:'url('+tablehead+')'}}>{this.state.data[z].regionid}</div>
+              <div className={[style.PersonNameBox,'childcenter','childcolumn'].join(' ')}>
+                  <div className={[style.PersonName,'childcenter'].join(' ')} style={{backgroundImage:'url('+tablechild+')'}}>{this.state.data[z].username}</div>
+              </div>
+              {this.state.data[z].over == 0?'':<div className={[style.ScoreBox,'childcenter'].join(' ')} style={{ backgroundImage: "url(" + button + ")" }}>
+                {this.state.data[z].score}分
+              </div>}
+          </div>);   
     }
     return result;
   }
@@ -49,7 +81,7 @@ export class RandomPPT extends Component {
         </div>
         <div className={[style.longScroll, "childcenter", "childcolumn"].join(" ")}
           style={{ backgroundImage: "url(" + longScroll + ")" }}>
-            <div className={[style.detial,'childcenter','childcontentstart'].join(' ')}>
+            <div className={[style.detial,'childcenter'].join(' ')}>
                 {this.RandomPerson()}
             </div>
         </div>
