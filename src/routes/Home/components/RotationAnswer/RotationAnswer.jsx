@@ -54,14 +54,14 @@ export class RotationAnswer extends Component {
                <span>天</span>
                <span>下</span>
             </div>
-            {/* <div className={[style.TheElderScroll,'childcenter'].join(' ')} style={{ backgroundImage: 'url(' + ElderScroll + ')' }}>
+            <div className={[style.TheElderScroll,'childcenter'].join(' ')} style={{ backgroundImage: 'url(' + ElderScroll + ')' }}>
                <div className={[style.Detial,'childcenter','childcontentstart'].join(' ')}>
 
                   {this.createPerson()}
 
                </div>
-            </div> */}
-            <QuestionBox />
+            </div>
+            {/* <QuestionBox /> */}
          </div>
       );
    }
