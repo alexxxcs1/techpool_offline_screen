@@ -16,21 +16,21 @@ componentDidMount() {
   this.refreshProps(this.props);
 }
 refreshProps(props) {
-  
+    this.state.question = props.data;
+    this.setState(this.state);
 }
 render() {
   return (
         <div className={[style.QuestionBox,'childcenter'].join(' ')} style={{backgroundImage:'url('+longScroll+')'}}>
-            <div className={[style.detial,'childcenter','childcolumn'].join(' ')}>
-
-                <div className={[style.QuestionTitle,'childcenter'].join(' ')}>1.RE-LY研究中对多少亚洲亚组人群进行了分析RE-LY研究中对多少亚洲亚组人群进行了分析RE-LY研究中对多少亚洲亚组人群进行了分析RE-LY研究中对多少亚洲亚组人群进行了分析？</div>
-                <div className={[style.QuestionOptionGroup,'childcenter'].join(' ')}>
-                    <div className={[style.OptionBox,'childcenter'].join(' ')}>A. 2,782例</div>
-                    <div className={[style.OptionBox,'childcenter'].join(' ')}>A. 2,781例</div>
-                    <div className={[style.OptionBox,'childcenter'].join(' ')}>A. 2,783例</div>
-                    <div className={[style.OptionBox,'childcenter'].join(' ')}>A. 2,784例</div>
+            {this.state.question?<div className={[style.detial,'childcenter','childcolumn'].join(' ')}>
+                <div className={[style.QuestionTitle,'childcenter'].join(' ')}>{this.state.question.title}</div>
+                <div className={[style.QuestionOptionGroup,'childcenter'].join(' ')}>s
+                    <div className={[style.OptionBox,'childcenter'].join(' ')}>A. {this.state.question.check['A']}</div>
+                    <div className={[style.OptionBox,'childcenter'].join(' ')}>B. {this.state.question.check['B']}</div>
+                    <div className={[style.OptionBox,'childcenter'].join(' ')}>C. {this.state.question.check['C']}</div>
+                    <div className={[style.OptionBox,'childcenter'].join(' ')}>D. {this.state.question.check['D']}</div>
                 </div>
-            </div>
+            </div>:''}
         </div>
    )
    }

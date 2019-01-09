@@ -29,6 +29,7 @@
                 // background: #000;
                 font-size: 35px;
                 font-weight: bold;
+                animation: scaleIn 0.5s calc(var(--index) * 0.2s) backwards;
                 .RegionName{
                     width: 299px;
                     height: 53px;
@@ -58,11 +59,11 @@
                     }
                     .correctpng{
                         // animation: rotateIn 0.5s backwards;
-                        animation: rotateIn 0.5s calc(var(--index) * 0.2s) backwards;
+                        animation: rotateIn 0.5s calc(var(--index) * 0.2s + 0.5s) backwards;
                     }
                     .wrongpng{
                         // animation: scaleIn 0.5s backwards;
-                        animation: scaleIn 0.5s calc(var(--index) * 0.2s) backwards;
+                        animation: scaleIn 0.5s calc(var(--index) * 0.2s + 0.5s) backwards;
                     }
                 }
             }
