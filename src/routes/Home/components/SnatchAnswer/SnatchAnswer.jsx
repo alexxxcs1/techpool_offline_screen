@@ -14,7 +14,9 @@ export class SnatchAnswer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stageStatus: 1
+      ws_connection:null,
+      data:[],
+      stageStatus: 0
     };
     this.refreshProps = this.refreshProps.bind(this);
     this.customRoute = this.customRoute.bind(this);
@@ -26,6 +28,33 @@ export class SnatchAnswer extends Component {
   }
   componentDidMount() {
     this.refreshProps(this.props);
+    let connection = new WebSocket('ws://192.168.1.12:8282');
+
+    this.state.ws_connection = connection;
+    this.setState(this.state);
+    let self = this;
+    //open connection
+    connection.onopen = function () {
+      connection.send(JSON.stringify({'type':'pcqiangda','action':'show'})); 
+    };
+    //onerror
+    connection.onerror = function (error) {
+      console.log('WebSocket Error ' + error);
+    };
+    
+    //to receive the message from server
+    connection.onmessage = function (e) {
+      let data = JSON.parse(e.data);
+      switch (data.action) {
+        case 'show':
+          self.state.stageStatus = data.step;
+          self.state.data = data.result[self.state.stageStatus];
+          self.setState(self.state);
+          break;
+        default:
+          break;
+      }
+    };
   }
   refreshProps(props) {}
   createTableList() {
@@ -61,7 +90,7 @@ export class SnatchAnswer extends Component {
   }
   createQuestionOption() {
     let result = [];
-    for (let z = 0; z < 10; z++) {
+    for (let z = 0; z < this.state.data.length; z++) {
       result.push(
         <div className={[style.Question, "childcenter"].join(" ")}>
           <div
@@ -74,8 +103,8 @@ export class SnatchAnswer extends Component {
                 "childcolumn",
                 "childcolumn"
               ].join(" ")}>
-              <span>{z + 1}</span>
-              <span>{Math.floor(Math.random() * 10) + 1}分</span>
+              <span>{this.state.data[z].num}</span>
+              <span>{this.state.data[z].score}分</span>
             </div>
           </div>
         </div>
@@ -85,8 +114,8 @@ export class SnatchAnswer extends Component {
   }
   customRoute() {
     switch (this.state.stageStatus) {
-      default:
-      case 0:
+      // default:
+      case 'list':
         return (
           <div
             className={[
@@ -98,8 +127,8 @@ export class SnatchAnswer extends Component {
             {this.createQuestionOption()}
           </div>
         );
-      case 1:
-        return <SnatchedQuestion />;
+      case 'user':
+        return <AlertBox />;
     }
   }
   render() {

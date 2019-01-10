@@ -17,9 +17,11 @@ export class AlertBox extends Component {
   render() {
     return (
       <div className={[style.AlertBox, "childcenter", "childcolumn"].join(" ")}>
-        <span>恭喜上海大区的彭于晏</span>
-        <span>抢到了题目！</span>
-        <span>他选择的旗帜是6号旗</span>
+        <div className={[style.Detial, "childcenter", "childcolumn"].join(" ")}>
+          <span>恭喜上海大区的彭于晏</span>
+          <span>抢到了题目！</span>
+          <span>他选择的旗帜是6号旗</span>
+        </div>
       </div>
     );
   }

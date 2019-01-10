@@ -3,7 +3,11 @@ import { Redirect,Route,Switch} from 'react-router-dom';
 import style from './Home.scss'
 import background from 'assets/background.png'
 import PresonRank from './components/PresonRank'
+import PresonRankOnline from './components/PresonRankOnline'
+
 import RegionRank from './components/RegionRank'
+import RegionRankOline from './components/RegionRankOline'
+
 import RandomPPT from './components/RandomPPT'
 import RotationAnswer from './components/RotationAnswer'
 import BlackRank from './components/BlackRank'
@@ -40,6 +44,9 @@ export class Home extends Component {
                   {/* 首页 */}
                   <Route path='/regionrank' component={RegionRank} /> {/*预热ajax*/} 
                   <Route path='/presonrank' component={PresonRank} /> {/*预热ajax*/} 
+                  <Route path='/olinepersonrank' component={PresonRankOnline} /> {/*现场个人排行榜ajax*/} 
+                  <Route path='/olineregionrank' component={RegionRankOline} /> {/*现场大区排行榜ajax*/} 
+                  
                   <Route path='/randomppt' component={RandomPPT} />
                   <Route path='/rotation' component={RotationAnswer} />
                   <Route path='/blackrank' component={BlackRank} />

@@ -9,7 +9,19 @@ const AskPost = (ajaxinstance) => {
     customer.getWarmUpRegionRank = () => {
         return ajaxinstance.post('Leaderboard/RegionalWarmingUp');
     }
-
+    //黑榜
+    customer.getBlackRank = () => {
+        return ajaxinstance.post('Leaderboard/Blacklist');
+    }
+    //个人总榜
+    customer.getPersonRank = () => {
+        return ajaxinstance.post('Leaderboard/IndividualRanking');
+    }
+    //区域总榜
+    customer.getRegionRank = () => {
+        return ajaxinstance.post('Leaderboard/RegionalTotalRanking');
+    }
+    
     return customer
 
   }

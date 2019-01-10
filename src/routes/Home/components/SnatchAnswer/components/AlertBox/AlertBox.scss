@@ -5,14 +5,19 @@
     background: #fff;
     z-index: 9;
     border-radius: 13px 7px;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    .Detial{
+        width: 795px;
+        height: 386px;
+        background: #fff;
+    }
     &::after {
         position: absolute;
         content: '';
-        z-index: 8;
+        z-index: -1;
         background: rgba($color: #fff, $alpha: 0.6);
         width: 855px;
         height: 405px;

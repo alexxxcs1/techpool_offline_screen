@@ -5,43 +5,62 @@ import button from "assets/button.png";
 import tableHead from "assets/tablehead.png";
 import tablechild from "assets/tablechild.png";
 
+import {api} from 'common/app'
+
+const zhcnNum = ['一','二','三','四','五','六','七','八','九','十'];
 export class BlackRank extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data:[],
+    };
     this.refreshProps = this.refreshProps.bind(this);
     this.createTableList = this.createTableList.bind(this);
+    this.getBlackRank = this.getBlackRank.bind(this);
   }
   componentWillReceiveProps(nextprops) {
     this.refreshProps(nextprops);
   }
   componentDidMount() {
     this.refreshProps(this.props);
+    this.getBlackRank();
   }
   refreshProps(props) {}
+  getBlackRank(){
+    api.getBlackRank().then(res=>{
+      console.log(res);
+      if (res.code == 200) {
+        this.state.data = res.result;
+        this.setState(this.state);
+      }
+    },err=>{
+      console.log(err);
+      
+    })
+  }
   createTableList(){
       let result = [];
-      for (let z = 0; z < 10; z++) {
+      for (let z = 0; z < this.state.data.length; z++) {
         result.push(<div className={[style.RowItem, "childcenter"].join(" ")}>
         <div className={[style.RowColumn, "childcenter"].join(" ")}>
           <div
             className={[style.ValueBox, "childcenter"].join(" ")}
             style={{ backgroundImage: "url(" + tablechild + ")" }}>
-            第一名
+            第{zhcnNum[z]}名
           </div>
         </div>
         <div className={[style.RowColumn, "childcenter"].join(" ")}>
           <div
             className={[style.ValueBox, "childcenter"].join(" ")}
             style={{ backgroundImage: "url(" + tablechild + ")" }}>
-            彭于晏(上海大区)
+            {this.state.data[z].username}({this.state.data[z].regionname})
           </div>
         </div>
         <div className={[style.RowColumn, "childcenter"].join(" ")}>
           <div
             className={[style.ValueBox, "childcenter"].join(" ")}
             style={{ backgroundImage: "url(" + tablechild + ")" }}>
-            20%
+            {this.state.data[z].rate}%
           </div>
         </div>
       </div>);
