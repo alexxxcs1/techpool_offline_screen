@@ -13,15 +13,20 @@ export class AlertBox extends Component {
   componentDidMount() {
     this.refreshProps(this.props);
   }
-  refreshProps(props) {}
+  refreshProps(props) {
+    this.state.data = props.data?props.data:this.state.data;
+    console.log(this.state.data);
+    
+    this.setState(this.state);
+  }
   render() {
     return (
       <div className={[style.AlertBox, "childcenter", "childcolumn"].join(" ")}>
-        <div className={[style.Detial, "childcenter", "childcolumn"].join(" ")}>
-          <span>恭喜上海大区的彭于晏</span>
+        {this.state.data?<div className={[style.Detial, "childcenter", "childcolumn"].join(" ")}>
+          <span>恭喜{this.state.data.regionname}的{this.state.data.username}</span>
           <span>抢到了题目！</span>
-          <span>他选择的旗帜是6号旗</span>
-        </div>
+          <span>他选择的旗帜是{this.state.data.num}号旗</span>
+        </div>:''}
       </div>
     );
   }

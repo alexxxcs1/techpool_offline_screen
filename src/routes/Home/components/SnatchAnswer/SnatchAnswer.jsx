@@ -3,6 +3,8 @@ import style from "./SnatchAnswer.scss";
 
 import AlertBox from "./components/AlertBox";
 import SnatchedQuestion from "./components/SnatchedQuestion";
+import ScoreBox from "./components/ScoreBox";
+import QuestionBox from "./components/QuestionBox";
 
 import longScroll from "assets/longScroll.png";
 import button from "assets/button.png";
@@ -20,7 +22,6 @@ export class SnatchAnswer extends Component {
     };
     this.refreshProps = this.refreshProps.bind(this);
     this.customRoute = this.customRoute.bind(this);
-    this.createTableList = this.createTableList.bind(this);
     this.createQuestionOption = this.createQuestionOption.bind(this);
   }
   componentWillReceiveProps(nextprops) {
@@ -48,7 +49,7 @@ export class SnatchAnswer extends Component {
       switch (data.action) {
         case 'show':
           self.state.stageStatus = data.step;
-          self.state.data = data.result[self.state.stageStatus];
+          self.state.data = data.result[self.state.stageStatus];   
           self.setState(self.state);
           break;
         default:
@@ -57,37 +58,6 @@ export class SnatchAnswer extends Component {
     };
   }
   refreshProps(props) {}
-  createTableList() {
-    let result = [];
-    for (let z = 0; z < 10; z++) {
-      result.push(
-        <div className={[style.RowItem, "childcenter"].join(" ")}>
-          <div className={[style.RowColumn, "childcenter"].join(" ")}>
-            <div
-              className={[style.ValueBox, "childcenter"].join(" ")}
-              style={{ backgroundImage: "url(" + tablechild + ")" }}>
-              第一名
-            </div>
-          </div>
-          <div className={[style.RowColumn, "childcenter"].join(" ")}>
-            <div
-              className={[style.ValueBox, "childcenter"].join(" ")}
-              style={{ backgroundImage: "url(" + tablechild + ")" }}>
-              彭于晏(上海大区)
-            </div>
-          </div>
-          <div className={[style.RowColumn, "childcenter"].join(" ")}>
-            <div
-              className={[style.ValueBox, "childcenter"].join(" ")}
-              style={{ backgroundImage: "url(" + tablechild + ")" }}>
-              20%
-            </div>
-          </div>
-        </div>
-      );
-    }
-    return result;
-  }
   createQuestionOption() {
     let result = [];
     for (let z = 0; z < this.state.data.length; z++) {
@@ -128,7 +98,18 @@ export class SnatchAnswer extends Component {
           </div>
         );
       case 'user':
-        return <AlertBox />;
+        return <AlertBox data={this.state.data}/>;
+      case 'score':
+        return <ScoreBox data={this.state.data}/>
+      case 'question':
+        return <QuestionBox data={this.state.data}/>
+      case 'correct':
+        return <div className={[style.CurrectOrNot,'childcenter childcolumn'].join(' ')}>
+          <span>{this.state.data.num}号题回答{this.state.data.is_correct=='error'?'失败':'成功'}</span>
+          <span>该大区{this.state.data.is_correct=='error'?'减':'加'}{this.state.data.score}分</span>
+        </div>;
+      case 'imgurl':
+        return <img className={style.ResultImg} src={this.state.data}/>
     }
   }
   render() {

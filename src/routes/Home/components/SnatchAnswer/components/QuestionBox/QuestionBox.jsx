@@ -21,10 +21,10 @@ refreshProps(props) {
 }
 render() {
   return (
-        <div className={[style.QuestionBox,'childcenter'].join(' ')} style={{backgroundImage:'url('+longScroll+')'}}>
-            {this.state.question?<div className={[style.detial,'childcenter','childcolumn'].join(' ')}>
+        <div className={[style.QuestionBox,'childcenter'].join(' ')}>
+            {this.state.question?<div className={[style.detial,'childcenter childcolumn'].join(' ')}>
                 <div className={[style.QuestionTitle,'childcenter'].join(' ')}>{this.state.question.title}</div>
-                <div className={[style.QuestionOptionGroup,'childcenter'].join(' ')}>
+                <div className={[style.QuestionOptionGroup,'childcenter'].join(' ')}>s
                     <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>A. {this.state.question.check['A']}</div>
                     <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>B. {this.state.question.check['B']}</div>
                     <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>C. {this.state.question.check['C']}</div>

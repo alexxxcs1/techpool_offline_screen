@@ -82,7 +82,7 @@ export class RotationAnswer extends Component {
          case 'question':
             return <QuestionBox data={this.state.question}/>
          case 'img':
-            // return <img src={this.state.imgurl} style={{width:'960px',marginTop:'80px'}}/>
+            return <img src={this.state.imgurl} style={{width:'960px',marginTop:'80px'}}/>
       }
    }
    render() {
