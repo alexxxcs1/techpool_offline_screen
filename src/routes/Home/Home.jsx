@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect,Route,Switch} from 'react-router-dom';
+import PropTypes from "prop-types";
 import style from './Home.scss'
 import background from 'assets/background.png'
 import PresonRank from './components/PresonRank'
@@ -13,6 +14,8 @@ import RotationAnswer from './components/RotationAnswer'
 import BlackRank from './components/BlackRank'
 import SnatchAnswer from './components/SnatchAnswer'
 
+const WebSocketIP = 'ws://192.168.0.100:8282';
+
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +27,11 @@ export class Home extends Component {
   componentDidMount()
   {
     
+  }
+  getChildContext() {
+    return {
+      WebSocketIP: WebSocketIP
+    };
   }
   customRoute(){
     //此处应该用hash路由，不能用状态路由
@@ -59,5 +67,7 @@ export class Home extends Component {
     )
   }
 }
-
+Home.childContextTypes = {
+  WebSocketIP: PropTypes.string
+};
 export default Home

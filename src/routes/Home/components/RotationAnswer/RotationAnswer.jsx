@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import style from './RotationAnswer.scss';
+
+import PropTypes from "prop-types";
 import QuestionBox from './components/QuestionBox'
 
 import button from 'assets/button.png'
@@ -30,7 +32,7 @@ export class RotationAnswer extends Component {
    }
    componentDidMount() {
       this.refreshProps(this.props);
-      let connection = new WebSocket('ws://192.168.1.12:8282');
+      let connection = new WebSocket(this.context.WebSocketIP);
       this.state.ws_connection = connection;
       this.setState(this.state);
       let self = this;
@@ -102,4 +104,7 @@ export class RotationAnswer extends Component {
       );
    }
 }
+RotationAnswer.contextTypes = {
+  WebSocketIP: PropTypes.func
+};
 export default RotationAnswer;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import style from "./SnatchAnswer.scss";
+import PropTypes from "prop-types";
 
 import AlertBox from "./components/AlertBox";
 import SnatchedQuestion from "./components/SnatchedQuestion";
@@ -29,7 +30,7 @@ export class SnatchAnswer extends Component {
   }
   componentDidMount() {
     this.refreshProps(this.props);
-    let connection = new WebSocket('ws://192.168.1.12:8282');
+    let connection = new WebSocket(this.context.WebSocketIP);
 
     this.state.ws_connection = connection;
     this.setState(this.state);
@@ -137,4 +138,7 @@ export class SnatchAnswer extends Component {
     );
   }
 }
+SnatchAnswer.contextTypes = {
+  WebSocketIP: PropTypes.func
+};
 export default SnatchAnswer;

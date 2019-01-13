@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import style from "./RandomPPT.scss";
+import PropTypes from "prop-types";
 import button from "assets/button.png";
 import longScroll from "assets/longScroll.png";
 import tablehead from "assets/tablehead.png";
 import tablechild from "assets/tablechild.png";
-
-
 
 export class RandomPPT extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export class RandomPPT extends Component {
   }
   refreshProps(props) {}
   connectWebSocket(){
-    let connection = new WebSocket('ws://192.168.1.12:8282');
+    let connection = new WebSocket(this.context.WebSocketIP);
     this.state.ws_connection = connection;
     this.setState(this.state);
     let self = this;
@@ -89,4 +88,7 @@ export class RandomPPT extends Component {
     );
   }
 }
+RandomPPT.contextTypes = {
+  WebSocketIP: PropTypes.func
+};
 export default RandomPPT;

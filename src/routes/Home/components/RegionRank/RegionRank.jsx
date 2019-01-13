@@ -72,7 +72,7 @@ export class RegionRank extends Component {
         <div
           className={[style.Tittle, "childcenter", "childcolumn"].join(" ")}
           style={{ backgroundImage: "url(" + button + ")" }}>
-          "天纵奇才"挑战赛琅琊榜
+          大区排行榜
         </div>
         <div
           className={[style.longScroll, "childcenter", "childcolumn"].join(" ")}
