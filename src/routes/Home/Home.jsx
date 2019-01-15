@@ -14,7 +14,7 @@ import RotationAnswer from './components/RotationAnswer'
 import BlackRank from './components/BlackRank'
 import SnatchAnswer from './components/SnatchAnswer'
 
-const WebSocketIP = 'ws://192.168.0.100:8282';
+const WebSocketIP = 'ws://192.168.10.2:8282';
 
 export class Home extends Component {
   constructor(props) {
@@ -51,9 +51,9 @@ export class Home extends Component {
                   
                   {/* 首页 */}
                   <Route path='/regionrank' component={RegionRank} /> {/*预热ajax*/} 
-                  <Route path='/presonrank' component={PresonRank} /> {/*预热ajax*/} 
-                  <Route path='/olinepersonrank' component={PresonRankOnline} /> {/*现场个人排行榜ajax*/} 
-                  <Route path='/olineregionrank' component={RegionRankOline} /> {/*现场大区排行榜ajax*/} 
+                  <Route path='/personrank' component={PresonRank} /> {/*预热ajax*/} 
+                  <Route path='/onlinepersonrank' component={PresonRankOnline} /> {/*现场个人排行榜ajax*/} 
+                  <Route path='/onlineregionrank' component={RegionRankOline} /> {/*现场大区排行榜ajax*/} 
                   
                   <Route path='/randomppt' component={RandomPPT} />
                   <Route path='/rotation' component={RotationAnswer} />

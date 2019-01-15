@@ -43,7 +43,9 @@ export class SnatchAnswer extends Component {
     connection.onerror = function (error) {
       console.log('WebSocket Error ' + error);
     };
-    
+    connection.onclose = function () {
+      window.location.reload();
+    }
     //to receive the message from server
     connection.onmessage = function (e) {
       let data = JSON.parse(e.data);
@@ -63,7 +65,7 @@ export class SnatchAnswer extends Component {
     let result = [];
     for (let z = 0; z < this.state.data.length; z++) {
       result.push(
-        <div className={[style.Question, "childcenter"].join(" ")}>
+        <div className={[style.Question,this.state.data[z].status==0?'':style.cantsnatch, "childcenter"].join(" ")}>
           <div
             className={[style.Flag, "childcenter", "childalignstart"].join(" ")}
             style={{ backgroundImage: "url(" + flag + ")" }}>

@@ -25,10 +25,10 @@ render() {
             {this.state.question?<div className={[style.detial,'childcenter','childcolumn'].join(' ')}>
                 <div className={[style.QuestionTitle,'childcenter'].join(' ')}>{this.state.question.title}</div>
                 <div className={[style.QuestionOptionGroup,'childcenter'].join(' ')}>
-                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>A. {this.state.question.check['A']}</div>
-                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>B. {this.state.question.check['B']}</div>
-                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>C. {this.state.question.check['C']}</div>
-                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>D. {this.state.question.check['D']}</div>
+                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>{this.state.question.check['A']? <div> <span className={style.optionkey}> A. </span> {this.state.question.check['A']}</div>:''}</div>
+                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>{this.state.question.check['B']? <div> <span className={style.optionkey}> B. </span> {this.state.question.check['B']}</div>:''}</div>
+                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>{this.state.question.check['C']? <div> <span className={style.optionkey}> C. </span> {this.state.question.check['C']}</div>:''}</div>
+                    <div className={[style.OptionBox,'childcenter childcontentstart childalightstart childalignstart'].join(' ')}>{this.state.question.check['D']? <div> <span className={style.optionkey}> D. </span> {this.state.question.check['D']}</div>:''}</div>
                 </div>
             </div>:''}
         </div>
