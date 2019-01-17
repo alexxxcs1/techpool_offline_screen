@@ -101,6 +101,7 @@ export class SnatchAnswer extends Component {
           </div>
         );
       case 'user':
+      case 'usercheck':
         return <AlertBox data={this.state.data}/>;
       case 'score':
         return <ScoreBox data={this.state.data}/>
